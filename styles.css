@@ -26,7 +26,7 @@ body{background:#f3f4f5;color:var(--ink)}
 .paper-footer{display:grid;grid-template-columns:minmax(0,1fr) auto auto;column-gap:5px;row-gap:4px;align-items:center;line-height:1.35}
 .paper-contact{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:3px 10px;padding-top:3px;border-top:1px solid #edf0f2;color:#64717b}
 .paper-contact span:first-child{font-weight:700;color:#303941}
-.paper-partner-brands{grid-column:1/-1;display:block;width:210px;max-width:100%;height:auto;margin:4px auto 0}
+.paper-partner-brands{position:absolute;left:50%;bottom:30px;display:block;width:340px;max-width:calc(100% - 88px);height:auto;transform:translateX(-50%)}
 .site-footer{background:#191b1f;color:#f5f6f7;padding:25px max(36px,calc((100vw - 1250px)/2)) 16px;display:grid;grid-template-columns:190px 1fr auto;align-items:center;gap:14px 28px;border-top:3px solid #d71920}
 .site-footer-brand{display:flex;flex-direction:column;gap:4px}
 .site-footer-brand img{width:158px;height:44px;object-fit:cover;object-position:center 48%;background:#fff;border-radius:3px}
@@ -54,4 +54,4 @@ body{background:#f3f4f5;color:var(--ink)}
 .catalog-option-meta{display:block;color:#8a949d;font-size:8px;margin-top:2px;text-transform:uppercase;letter-spacing:.35px}
 .catalog-empty{margin:0;padding:9px 8px;color:#7c8790;font-size:9px;line-height:1.4}
 @media(max-width:760px){.topbar{height:62px;padding:0 14px}.brand-logo-frame{width:150px;height:42px}.brand-caption{display:none}.site-footer{padding:20px;grid-template-columns:1fr;gap:15px}.site-footer-bottom{grid-column:1;gap:9px;flex-direction:column}.site-footer-services{gap:7px}.paper-logo{width:145px;height:43px;min-width:145px}}
-@media print{.site-footer{display:none!important}.topbar{display:none!important}.paper-header{background:#191b1f!important}.paper-footer{font-size:6.5pt!important}.paper-contact{font-size:6.2pt!important}.paper-logo{width:49mm!important;height:14mm!important;min-width:49mm!important}.paper-partner-brands{width:52mm!important;margin:1.5mm auto 0!important}}
+@media print{.site-footer{display:none!important}.topbar{display:none!important}.paper-header{background:#191b1f!important}.paper-footer{font-size:6.5pt!important}.paper-contact{font-size:6.2pt!important}.paper-logo{width:49mm!important;height:14mm!important;min-width:49mm!important}.paper-partner-brands{bottom:7mm!important;width:86mm!important;max-width:none!important;margin:0!important}}
