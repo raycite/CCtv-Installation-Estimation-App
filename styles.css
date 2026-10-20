@@ -45,5 +45,12 @@ body{background:#f3f4f5;color:var(--ink)}
 .form-section input:focus,.form-section select:focus,.form-section textarea:focus{border-color:#df777b;box-shadow:0 0 0 3px #fceced}
 .add-row{color:#c6161d}
 .preview-hint span{color:#c6161d}
+.catalog-field{position:relative;min-width:0}
+.catalog-suggestions{position:absolute;z-index:30;top:calc(100% + 4px);left:0;right:0;max-height:215px;overflow-y:auto;background:#fff;border:1px solid #d9dfe4;border-radius:6px;box-shadow:0 12px 24px rgba(30,35,41,.16);padding:4px}
+.catalog-option{display:block;width:100%;border:0;border-radius:4px;background:#fff;padding:7px 8px;text-align:left;cursor:pointer;font-family:'DM Sans',sans-serif}
+.catalog-option:hover,.catalog-option.is-active{background:#fff0f0}
+.catalog-option-name{display:block;color:#273039;font-size:10px;font-weight:700;line-height:1.25}
+.catalog-option-meta{display:block;color:#8a949d;font-size:8px;margin-top:2px;text-transform:uppercase;letter-spacing:.35px}
+.catalog-empty{margin:0;padding:9px 8px;color:#7c8790;font-size:9px;line-height:1.4}
 @media(max-width:760px){.topbar{height:62px;padding:0 14px}.brand-logo-frame{width:150px;height:42px}.brand-caption{display:none}.site-footer{padding:20px;grid-template-columns:1fr;gap:15px}.site-footer-bottom{grid-column:1;gap:9px;flex-direction:column}.site-footer-services{gap:7px}.paper-logo{width:145px;height:43px;min-width:145px}}
 @media print{.site-footer{display:none!important}.topbar{display:none!important}.paper-header{background:#191b1f!important}.paper-footer{font-size:6.5pt!important}.paper-contact{font-size:6.2pt!important}.paper-logo{width:49mm!important;height:14mm!important;min-width:49mm!important}}

@@ -16,5 +16,10 @@ The site is ready to publish as a public web page. Estimate entries remain in th
 
 - Edit the estimate reference, customer, supplier, currency, and notes.
 - Add or remove materials and services. Quantity, unit price, line totals, subtotals, installation, and total update automatically.
+- Begin typing in a material field to search the built-in catalogue. It supplies the item description only; prices are always entered manually for each estimate.
 - Select **Download PDF**, then choose **Save as PDF** in the browser print dialog. Estimates are formatted for A4 portrait; longer estimates continue on additional pages.
 - **New estimate** starts a fresh draft. **Reset to sample** restores the sample estimate.
+
+## Materials catalogue
+
+`material-catalog.js` contains the starter catalogue of CCTV equipment, accessories, networking products, cables, power components, and services. Each record includes a name, category, typical unit, and search aliases, without a price. Add or tailor items there as your supplier range changes.
