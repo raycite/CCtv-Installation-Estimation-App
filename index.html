@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#191b1f" />
+  <title>FAST-TECH Estimate Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/fast-tech-logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="FAST-TECH Estimate Studio home">
+      <span class="brand-logo-frame"><img src="assets/fast-tech-logo.png" alt="FAST-TECH Installation Services" /></span>
+      <span class="brand-caption">ESTIMATE STUDIO</span>
+    </a>
+    <div class="top-actions">
+      <span class="save-state"><i></i><span id="saveStatus">All changes saved</span></span>
+      <button class="button button-quiet" id="newEstimateBtn" type="button">＋ New estimate</button>
+      <button class="button button-primary" id="downloadBtn" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5v9m0 0 3.5-3.5M10 11.5 6.5 8M3.5 13v3.5h13V13"/></svg>Download PDF</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="editor-panel">
+      <div class="editor-heading"><div><p class="eyebrow">ESTIMATE BUILDER</p><h1>Build an estimate</h1></div><span class="draft-chip">DRAFT</span></div>
+      <p class="intro">Add customer details and materials. Your A4 estimate updates as you work.</p>
+      <form id="estimateForm" autocomplete="off">
+        <section class="form-section">
+          <div class="section-title"><span class="section-icon">01</span><div><h2>Estimate details</h2><p>Give this estimate a reference and date.</p></div></div>
+          <div class="field-grid two-col">
+            <label>Estimate number<input id="estimateNumber" data-field="estimateNumber" /></label>
+            <label>Date<input id="estimateDate" data-field="estimateDate" type="date" /></label>
+          </div>
+          <label class="field-gap">Estimate title<input id="estimateTitle" data-field="estimateTitle" placeholder="e.g. CCTV installation" /></label>
+          <label class="field-gap">Subtitle<input id="estimateSubtitle" data-field="estimateSubtitle" placeholder="e.g. 4 cameras + 8CH DVR" /></label>
+        </section>
+
+        <section class="form-section">
+          <div class="section-title"><span class="section-icon">02</span><div><h2>Customer & supplier</h2><p>Who is this estimate for?</p></div></div>
+          <div class="field-grid two-col">
+            <label>Customer name<input id="customerName" data-field="customerName" placeholder="Customer or business" /></label>
+            <label>Supplier<input id="supplierName" data-field="supplierName" placeholder="Supplier name" /></label>
+          </div>
+          <div class="field-grid two-col field-gap">
+            <label>Customer address<input id="customerAddress" data-field="customerAddress" placeholder="Town, region" /></label>
+            <label>Supplier / contact details<input id="supplierDetails" data-field="supplierDetails" placeholder="Phone, email or address" /></label>
+          </div>
+        </section>
+
+        <section class="form-section material-section">
+          <div class="section-title"><span class="section-icon">03</span><div><h2>Materials & services</h2><p>Quantities and prices calculate automatically.</p></div></div>
+          <div class="table-head"><span>DESCRIPTION</span><span>QTY</span><span>UNIT PRICE</span><span></span></div>
+          <div id="itemsEditor"></div>
+          <button class="add-row" id="addItemBtn" type="button"><span>＋</span> Add an item</button>
+        </section>
+
+        <section class="form-section">
+          <div class="section-title"><span class="section-icon">04</span><div><h2>Costs & notes</h2><p>Set your labour fee and add customer notes.</p></div></div>
+          <label>Installation fee <div class="money-input"><span id="currencyLabel">GHS</span><input id="installationFee" data-field="installationFee" inputmode="decimal" /></div></label>
+          <label class="field-gap">Currency<select id="currency" data-field="currency"><option value="GHS">GHS · Ghana cedi</option><option value="USD">USD · US dollar</option><option value="GBP">GBP · British pound</option><option value="EUR">EUR · Euro</option><option value="NGN">NGN · Nigerian naira</option></select></label>
+          <label class="field-gap">Package notes / support policy<textarea id="notes" data-field="notes" rows="4" placeholder="Add warranty, support, exclusions or payment terms..."></textarea></label>
+        </section>
+      </form>
+      <div class="editor-footer"><span>Changes are saved in this browser</span><button id="resetBtn" type="button">Reset to sample</button></div>
+    </aside>
+
+    <section class="preview-area" aria-label="Estimate preview">
+      <div class="preview-toolbar"><div><span class="preview-dot"></span><span>LIVE PREVIEW</span><span class="toolbar-divider"></span><span>A4 · PORTRAIT</span></div><button class="mobile-print" id="mobileDownloadBtn" type="button">Download PDF</button></div>
+      <div class="paper-wrap"><article class="paper" id="paper">
+        <header class="paper-header"><div><p class="paper-kicker" id="paperTitle">CCTV INSTALLATION</p><p class="paper-subtitle" id="paperSubtitle">COST ESTIMATE | 4 CAMERAS + 8CH DVR</p><p class="paper-description">Equipment, connectivity and installation</p></div><div class="paper-logo"><img src="assets/fast-tech-logo.png" alt="FAST-TECH Installation Services" /></div></header>
+        <section class="customer-card"><div><span class="label-teal">PREPARED FOR</span><strong id="paperCustomer">Customer name</strong><span id="paperAddress">Customer address</span></div><div><span class="label-teal">MATERIALS SOURCED FROM</span><strong id="paperSupplier">Supplier name</strong><span id="paperSupplierDetails">Supplier contact details</span></div><div class="estimate-meta"><span id="paperEstimateNumber">ESTIMATE # FT-0001</span><span id="paperDate">19 October 2026</span></div></section>
+        <table class="estimate-table"><thead><tr><th>ITEM / DESCRIPTION</th><th>QTY</th><th>UNIT (<span class="currency">GHS</span>)</th><th>TOTAL (<span class="currency">GHS</span>)</th></tr></thead><tbody id="paperItems"></tbody></table>
+        <section class="totals"><div class="total-line subtotal"><span>EQUIPMENT & CONNECTIVITY SUBTOTAL</span><strong><span class="currency">GHS</span> <span id="paperSubtotal">0.00</span></strong></div><div class="total-line install-line"><span>INSTALLATION FEE</span><strong><span class="currency">GHS</span> <span id="paperInstall">0.00</span></strong></div><div class="total-line grand-total"><span>TOTAL ESTIMATED COST</span><strong><span class="currency">GHS</span> <span id="paperGrandTotal">0.00</span></strong></div></section>
+        <section class="notes-block"><h3>PACKAGE NOTES / SUPPORT POLICY</h3><ul id="paperNotes"></ul></section>
+        <footer class="paper-footer"><span>FAST-TECH Installation Services · TrueTech Security Solution</span><span class="footer-divider">|</span><span>Estimate <span id="footerEstimateNumber">FT-0001</span></span><span class="footer-date" id="footerDate"></span><div class="paper-contact"><span>Raymond Ntow</span><span>055 963 3286 · 055 485 6486</span><span>Martey Tusure Road, Off Spintex Road, Spintex, Accra - Ghana</span></div></footer>
+      </article></div>
+      <div class="preview-hint"><span>↗</span> Your estimate is formatted for A4 printing. Choose “Save as PDF” in the print dialog to download a PDF.</div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer-brand"><img src="assets/fast-tech-logo.png" alt="FAST-TECH Installation Services" /><span>Estimate Studio</span></div>
+    <div class="site-footer-services"><span>CCTV setup</span><i></i><span>Installation</span><i></i><span>Servicing</span><i></i><span>Inspection</span><i></i><span>Troubleshooting</span></div>
+    <div class="site-footer-contact"><strong>TrueTech Security Solution</strong><span>Martey Tusure Road, Off Spintex Road, Spintex, Accra - Ghana</span><a href="tel:+233559633286">055 963 3286</a><a href="tel:+233554856486">055 485 6486</a></div>
+    <div class="site-footer-bottom"><span>Secure · Connect · Reliable</span><span>© <span id="currentYear"></span> FAST-TECH Installation Services</span></div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
